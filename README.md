@@ -1,12 +1,13 @@
 # deep_md_test
-Deepmd integration with Paddle
+Deepmd integration with Paddle, without lammps
 
-Compile and run
+- Used Paddle commit `c91aaced74aa1a34c8bde2e53b3072baf8012e73` to generate paddle_inference_install_dir and PADDLE_ROOT
+- Compile and run
 ```
 bash run.sh
 ./infer_test
 ```
-The results are as follows
+- The results are as follows
 ```
 I0809 16:18:27.501428 382150 naive_executor.cc:110] ---  skip [feed], feed -> type
 I0809 16:18:27.501431 382150 naive_executor.cc:110] ---  skip [feed], feed -> coord
