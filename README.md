@@ -5,7 +5,7 @@ Deepmd integration with Paddle, without lammps
 ```
 export PADDLE_ROOT=/xxx/Paddle/build/paddle_inference_install_dir
 ```
-- Compile deepmd_root by 
+- Compile paddle-deepmd and generate DEEPMD_ROOT by 
 ```
 rm -rf /home/danqing/deepmdroot/ && mkdir /home/danqing/deepmdroot && DEEPMD_ROOT=/home/danqing/deepmdroot(or add in bashrc with export)
 cd /home/danqing/repo/paddle-deepmd/source && rm -rf build && mkdir build && cd build
