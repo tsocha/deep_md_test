@@ -7,6 +7,7 @@ export PADDLE_ROOT=/xxx/Paddle/build/paddle_inference_install_dir
 ```
 - Compile paddle-deepmd and generate DEEPMD_ROOT by 
 ```
+git clone https://github.com/X4Science/paddle-deepmd.git
 rm -rf /home/danqing/deepmdroot/ && mkdir /home/danqing/deepmdroot && DEEPMD_ROOT=/home/danqing/deepmdroot(or add in bashrc with export)
 cd /home/danqing/repo/paddle-deepmd/source && rm -rf build && mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=$DEEPMD_ROOT -DPADDLE_ROOT=$PADDLE_ROOT -DUSE_CUDA_TOOLKIT=FALSE -DFLOAT_PREC=low ..
