@@ -38,8 +38,22 @@ I0809 16:18:27.849589 382150 infer_test.cc:139] output[100]: -187.135
 - The above results shows succesful inference with double64. We then need to enable mkldnn fp32 inference for deep_md
 Just change 
 ```
-
+void PrepareTRTConfig(Config *config) {
+  config->SetModel(FLAGS_dirname + "/model.pdmodel", FLAGS_dirname + "/model.pdiparams");
+  //config->EnableUseGpu(100, 0);
+  //Uncomment for CPU Backend
+  config->DisableGpu();
+}
 ```
 to
 ```
+void PrepareTRTConfig(Config *config) {
+  config->SetModel(FLAGS_dirname + "/model.pdmodel", FLAGS_dirname + "/model.pdiparams");
+  //config->EnableUseGpu(100, 0);
+  //Uncomment for CPU Backend
+  config->DisableGpu();
+  config->SwitchIrOptim();
+  config->EnableMKLDNN();
+  config->SetCpuMathLibraryNumThreads(12);
+}
 ```
