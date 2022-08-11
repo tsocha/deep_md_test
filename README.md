@@ -1,8 +1,19 @@
 # deep_md_test
 Deepmd integration with Paddle, without lammps
 
-- Used Paddle commit `c91aaced74aa1a34c8bde2e53b3072baf8012e73` to generate paddle_inference_install_dir and PADDLE_ROOT
-- Compile and run
+- Used Paddle commit `c91aaced74aa1a34c8bde2e53b3072baf8012e73` and compile with MKLDNN ON to generate paddle_inference_install_dir and 
+```
+export PADDLE_ROOT=/xxx/Paddle/build/paddle_inference_install_dir
+```
+- Compile deepmd_root by 
+```
+rm -rf /home/danqing/deepmdroot/ && mkdir /home/danqing/deepmdroot && DEEPMD_ROOT=/home/danqing/deepmdroot(or add in bashrc with export)
+cd /home/danqing/repo/paddle-deepmd/source && rm -rf build && mkdir build && cd build
+cmake -DCMAKE_INSTALL_PREFIX=$DEEPMD_ROOT -DPADDLE_ROOT=$PADDLE_ROOT -DUSE_CUDA_TOOLKIT=FALSE -DFLOAT_PREC=low ..
+make -j 4 && make install
+make lammps
+```
+- Compile deep_md_test and run
 ```
 bash run.sh
 ./infer_test
