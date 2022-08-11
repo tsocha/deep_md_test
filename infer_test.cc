@@ -22,9 +22,9 @@ double time_diff(Time t1, Time t2) {
 
 void PrepareTRTConfig(Config *config) {
   config->SetModel(FLAGS_dirname + "/model.pdmodel", FLAGS_dirname + "/model.pdiparams");
-  config->EnableUseGpu(100, 0);
+  //config->EnableUseGpu(100, 0);
   //Uncomment for CPU Backend
-  //config->DisableGpu();
+  config->DisableGpu();
 }
 
 bool test_map_cnn(int batch_size, int repeat) {
