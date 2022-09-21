@@ -110,7 +110,7 @@ void ConfigureInputs(const std::string& filename,
     tensor->CopyFromCpu(data.data());
 }
 
-bool test_dp_infer(void) {
+void test_dp_infer(void) {
   Config config;
   PrepareTRTConfig(&config);
   auto predictor = CreatePredictor(config);
