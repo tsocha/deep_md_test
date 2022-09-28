@@ -8,6 +8,8 @@
 #include <numeric>
 
 DEFINE_string(dirname, "model.ckpt", "Directory of the inference model.");
+DEFINE_bool(use_mkldnn, false, "Should mkldnn be used");
+DEFINE_bool(use_mt, false, "Multithreading");
 
 namespace paddle_infer {
 
@@ -25,6 +27,12 @@ void PrepareTRTConfig(Config *config) {
   //config->EnableUseGpu(100, 0);
   //Uncomment for CPU Backend
   config->DisableGpu();
+  if(FLAGS_use_mkldnn) {
+    config->SwitchIrOptim();
+    config->EnableMKLDNN();
+    if(FLAGS_use_mt)
+      config->SetCpuMathLibraryNumThreads(12); 
+  }
 }
 
 bool test_map_cnn(int batch_size, int repeat) {
